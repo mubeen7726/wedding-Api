@@ -49,7 +49,7 @@ export default function FormInputs() {
     };
 
     try {
-      const user = await axios.post("https://wedding-api-teal.vercel.app/user/reject", rejectInfo);
+      const user = await axios.post("https://wedding-api-eight.vercel.app/user/reject", rejectInfo);
       if (user) {
         toast.success("Rejection recorded successfully!");
         localStorage.setItem("UserInfo", JSON.stringify(user.data));
