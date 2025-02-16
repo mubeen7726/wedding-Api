@@ -11,7 +11,7 @@ router.post('/accept', async (req, res) => {
         await user.save();
         res.status(201).json(user);
     } catch (error) {
-        console.error('Error saving accepted user:', error); // Log the error
+        console.error('Error saving accepted user:', error);
         res.status(400).json({ error: error.message });
     }
 });
@@ -24,7 +24,7 @@ router.post('/reject', async (req, res) => {
         await user.save();
         res.status(201).json(user); 
     } catch (error) {
-        console.error('Error saving rejected user:', error); // Log the error
+        console.error('Error saving rejected user:', error); 
         res.status(400).json({ error: error.message }); 
     }
 });

@@ -9,12 +9,9 @@ const cors = require('cors');
 dotenv.config();
 
 // Connect to MongoDB using the connection string from .env
-mongoose.connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected successfully'))
-.catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGODB_URL)
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 // Initialize Express app
 const app = express();
@@ -25,11 +22,11 @@ app.use(bodyParser.json()); // Middleware to parse JSON requests
 app.use('/user', router);
 
 app.get('/', (req, res) => {
-    res.send("Hello World!");
+  res.send("Hello World!");
 });
 
 // Start the server
 const PORT = process.env.PORT && 3001;
 app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`);
+  console.log(`Server is running on port http://localhost:${PORT}`);
 });
