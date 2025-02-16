@@ -1,25 +1,32 @@
-const express = require('express')
+const express = require('express');
 const User = require('../schema/UserSchema');
-const rejectHandle = require('../schema/RejectUser');
+const RejectUser  = require('../schema/RejectUser');
 const router = express.Router();
-router.post('/accpet', async  (req, res) => {
+
+// Accept user
+router.post('/accept', async (req, res) => {
     try {
+        // Optional: Validate req.body here
         const user = new User(req.body);
         await user.save();
         res.status(201).json(user);
     } catch (error) {
+        console.error('Error saving accepted user:', error); // Log the error
         res.status(400).json({ error: error.message });
     }
 });
+
+// Reject user
 router.post('/reject', async (req, res) => {
     try {
-        const user = new rejectHandle(req.body);
+        // Optional: Validate req.body here
+        const user = new RejectUser (req.body);
         await user.save();
         res.status(201).json(user); 
     } catch (error) {
+        console.error('Error saving rejected user:', error); // Log the error
         res.status(400).json({ error: error.message }); 
     }
 });
 
-
-module.exports= router;
+module.exports = router;

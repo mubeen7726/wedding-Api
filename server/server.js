@@ -2,10 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const router = require('./routes/userRoutes')
-
+const router = require('./routes/userRoutes');
 const cors = require('cors');
-
 
 // Load environment variables from .env file
 dotenv.config();
@@ -24,12 +22,11 @@ app.use(cors());
 app.use(bodyParser.json()); // Middleware to parse JSON requests
 
 // Create a new user
-app.use('/user',router)
+app.use('/user', router);
 
-app.get('/',(res,req)=>{
-    res.send("Hello World!")
-})
-
+app.get('/', (req, res) => {
+    res.send("Hello World!");
+});
 
 // Start the server
 const PORT = process.env.PORT && 3001;
